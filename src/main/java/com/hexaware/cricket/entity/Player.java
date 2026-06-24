@@ -12,22 +12,22 @@ public class Player {
     @Column(name = "player_id")
     private int playerId;
 
-    @Column(name = "player_name", nullable = false)
+    @Column(name = "player_name")
     private String playerName;
 
-    @Column(name = "jersey_number", nullable = false)
+    @Column(name = "jersey_number")
     private int jerseyNumber;
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "role")
     private String role;
 
-    @Column(name = "total_matches", nullable = false)
+    @Column(name = "total_matches")
     private int totalMatches;
 
-    @Column(name = "team_name", nullable = false)
+    @Column(name = "team_name")
     private String teamName;
 
-    @Column(name = "country_name", nullable = false)
+    @Column(name = "country_name")
     private String countryName;
 
     @Column(name = "description")
