@@ -39,8 +39,8 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Player updatePlayer(int playerId,PlayerDTO playerDto) throws ResourceNotFoundException {
         
-        Player existingPlayer = playerRepository.findById(playerDto.getPlayerId())
-                .orElseThrow(() -> new ResourceNotFoundException("Player profile modification failed! ID not found: " + playerDto.getPlayerId()));
+        Player existingPlayer = playerRepository.findById(playerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Player profile modification failed! ID not found: " + playerId));
         
         
         existingPlayer.setPlayerName(playerDto.getPlayerName());
@@ -59,8 +59,8 @@ public class PlayerServiceImpl implements PlayerService {
     public Player updatePlayerByJerseyNumber(int jerseyNumber, PlayerDTO playerDto) throws ResourceNotFoundException {
         
         
-        Player player = playerRepository.findByJerseyNumber(playerDto.getJerseyNumber())
-                .orElseThrow(() -> new ResourceNotFoundException("Player update failed! Jersey number not found: " + playerDto.getJerseyNumber()));
+        Player player = playerRepository.findByJerseyNumber(jerseyNumber)
+                .orElseThrow(() -> new ResourceNotFoundException("Player update failed! Jersey number not found: " + jerseyNumber));
         
         
         player.setPlayerName(playerDto.getPlayerName());
