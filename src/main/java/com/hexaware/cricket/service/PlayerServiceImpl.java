@@ -2,7 +2,7 @@ package com.hexaware.cricket.service;
 
 
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,7 +54,26 @@ public class PlayerServiceImpl implements PlayerService {
        
         return playerRepository.save(existingPlayer);
     }
-
+    
+    @Override
+    public Player updatePlayerByJerseyNumber(int jerseyNumber, PlayerDTO playerDto) throws ResourceNotFoundException {
+        
+        
+        Player player = playerRepository.findByJerseyNumber(jerseyNumber)
+                .orElseThrow(() -> new ResourceNotFoundException("Player update failed! Jersey number not found: " + jerseyNumber));
+        
+        
+        player.setPlayerName(playerDto.getPlayerName());
+        player.setRole(playerDto.getRole());
+        player.setTotalMatches(playerDto.getTotalMatches());
+        player.setTeamName(playerDto.getTeamName());
+        player.setCountryName(playerDto.getCountryName());
+        player.setDescription(playerDto.getDescription());
+        
+        
+        return playerRepository.save(player);
+    }
+    
     @Override
     public PlayerDTO getPlayerById(int playerId) throws ResourceNotFoundException {
         Player player = playerRepository.findById(playerId)

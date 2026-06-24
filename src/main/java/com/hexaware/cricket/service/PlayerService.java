@@ -5,12 +5,13 @@ import com.hexaware.cricket.entity.Player;
 import com.hexaware.cricket.exception.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PlayerService {
     
     public Player createPlayer(PlayerDTO playerDto);
     public Player updatePlayer(int playerId, PlayerDTO playerDto) throws ResourceNotFoundException;
-    
+    public Player updatePlayerByJerseyNumber(int jerseyNumber, PlayerDTO playerDto) throws ResourceNotFoundException;
     public List<Player> getAllPlayers();
     public PlayerDTO getPlayerById(int playerId) throws ResourceNotFoundException;
     public void deletePlayer(int playerId);

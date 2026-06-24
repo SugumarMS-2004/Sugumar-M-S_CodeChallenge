@@ -56,7 +56,17 @@ class PlayerServiceTest {
         assertNotNull(updated);
         assertEquals("King Kohli", updated.getPlayerName());
     }
-
+    
+    @Test
+    void testUpdatePlayerByJerseyNumber() throws ResourceNotFoundException {
+        playerDto.setPlayerName("King Kohlii");
+        Player updated = playerService.updatePlayer(18,playerDto);
+        
+        assertNotNull(updated);
+        assertEquals("King Kohlii", updated.getPlayerName());
+    }
+    
+    
     @Test
     void testGetPlayerById() throws ResourceNotFoundException {
         PlayerDTO found = playerService.getPlayerById(501);
