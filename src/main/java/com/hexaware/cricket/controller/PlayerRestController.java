@@ -26,6 +26,11 @@ public class PlayerRestController {
 		return service.updatePlayer(playerId, playerDto);
 	}
 	
+	@PutMapping("/update/{jerseyNumber}")
+	public Player updatePlayerByJerseyNumber(@PathVariable int jerseyNumber ,@RequestBody PlayerDTO playerDto) throws ResourceNotFoundException{
+		return service.updatePlayer(jerseyNumber, playerDto);
+	}
+	
 	@GetMapping("/getall")
 		public List<Player> getAllPlayers(){
 			return service.getAllPlayers();

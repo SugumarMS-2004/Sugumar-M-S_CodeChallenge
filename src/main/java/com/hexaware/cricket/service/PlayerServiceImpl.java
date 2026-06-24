@@ -59,8 +59,8 @@ public class PlayerServiceImpl implements PlayerService {
     public Player updatePlayerByJerseyNumber(int jerseyNumber, PlayerDTO playerDto) throws ResourceNotFoundException {
         
         
-        Player player = playerRepository.findByJerseyNumber(jerseyNumber)
-                .orElseThrow(() -> new ResourceNotFoundException("Player update failed! Jersey number not found: " + jerseyNumber));
+        Player player = playerRepository.findByJerseyNumber(playerDto.getJerseyNumber())
+                .orElseThrow(() -> new ResourceNotFoundException("Player update failed! Jersey number not found: " + playerDto.getJerseyNumber()));
         
         
         player.setPlayerName(playerDto.getPlayerName());
