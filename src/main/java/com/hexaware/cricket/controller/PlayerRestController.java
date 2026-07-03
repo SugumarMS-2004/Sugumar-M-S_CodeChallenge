@@ -1,0 +1,54 @@
+package com.hexaware.cricket.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.hexaware.cricket.dto.PlayerDTO;
+import com.hexaware.cricket.entity.Player;
+import com.hexaware.cricket.exception.ResourceNotFoundException;
+import com.hexaware.cricket.service.PlayerService;
+
+@CrossOrigin(origins = "http://localhost:5173")
+@RestController
+@RequestMapping("/api/players")
+public class PlayerRestController {
+	
+	@Autowired
+	private PlayerService service;
+	
+	@PostMapping("/add")
+	public Player createPlayer(@RequestBody PlayerDTO playerDto) {
+		return service.createPlayer(playerDto);
+	}
+	
+	@PutMapping("/update/{playerId}")
+	public Player updatePlayer(@PathVariable int playerId ,@RequestBody PlayerDTO playerDto) throws ResourceNotFoundException{
+		return service.updatePlayer(playerId, playerDto);
+	}
+	
+	@PutMapping("/updateby/{jerseyNumber}")
+	public Player updatePlayerByJerseyNumber(@PathVariable int jerseyNumber ,@RequestBody PlayerDTO playerDto) throws ResourceNotFoundException{
+		return service.updatePlayerByJerseyNumber(jerseyNumber, playerDto);
+	}
+	
+	@GetMapping("/getall")
+		public List<Player> getAllPlayers(){
+			return service.getAllPlayers();
+		}
+	
+	
+	
+	@GetMapping("/get/{playerId}")
+	public PlayerDTO getPlayerById(@PathVariable int playerId) throws ResourceNotFoundException {
+		return service.getPlayerById(playerId);
+	}
+	
+	@DeleteMapping("/delete/{playerId}")
+    public String deletePlayer(@PathVariable int playerId) {
+        service.deletePlayer(playerId);
+        return "Player deleted successfully with ID: " + playerId;
+    }
+	
+
+}
