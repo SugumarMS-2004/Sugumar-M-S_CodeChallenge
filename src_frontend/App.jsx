@@ -10,7 +10,7 @@ import PlayerListComponent from "./components/player-list.component";
 const App = () => {
   return (
     <div>
-      {/* Navigation Bar */}
+      
       <nav className="navbar navbar-expand navbar-dark bg-dark px-3">
         <Link to="/players" className="navbar-brand">
           CricketAcademy
@@ -34,7 +34,7 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Routing Routing Configuration Structure Matrix */}
+      
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<PlayerListComponent />} />
